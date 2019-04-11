@@ -431,10 +431,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MathEditor_Tests/Pods-MathEditor_Tests-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/DMMathEditor/MTKeyboardResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/DMiosMath-iOS8.0/mathFonts.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MTKeyboardResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mathFonts.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -518,10 +520,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MathEditor_Example/Pods-MathEditor_Example-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/DMMathEditor/MTKeyboardResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/DMiosMath-iOS8.0/mathFonts.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MTKeyboardResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mathFonts.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

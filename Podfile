@@ -9,5 +9,5 @@ target 'MathEditor_Tests' do
   pod 'DMMathEditor', :path => './'
 end
 target 'MathEditor' do
-  pod 'iosMath', :path => '../iosMath'
+  pod 'DMiosMath', :path => '../iosMath'
 end
