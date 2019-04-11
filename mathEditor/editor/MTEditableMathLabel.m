@@ -20,6 +20,8 @@
 #import "MTUnicode.h"
 #import "MTMathListBuilder.h"
 
+#import "MTFontManager.h"
+
 @interface MTEditableMathLabel() <UIGestureRecognizerDelegate, UITextInput>
 
 @property (nonatomic) MTMathUILabel* label;
@@ -134,10 +136,25 @@
 {
     return self.label.fontSize;
 }
-
-- (void)setFont:(UIFont *)font
+  
+- (void)latinModernFontWithSize:(CGFloat)size
 {
-
+    self.label.font = [[MTFontManager fontManager] latinModernFontWithSize:size];
+}
+  
+- (void)xitsFontWithSize:(CGFloat)size
+{
+    self.label.font = [[MTFontManager fontManager] xitsFontWithSize:size];
+}
+  
+- (void)termesFontWithSize:(CGFloat)size
+{
+    self.label.font = [[MTFontManager fontManager] termesFontWithSize:size];
+}
+  
+- (void)defaultFont
+{
+    self.label.font = [[MTFontManager fontManager] defaultFont];
 }
 
 - (void)setContentInsets:(UIEdgeInsets)contentInsets

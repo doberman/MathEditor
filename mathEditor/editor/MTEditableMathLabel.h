@@ -83,8 +83,12 @@
 - (void) enableTap:(BOOL) enable;
 //- (void) loadNextAtom;
 //- (void) loadPreviousAtom;
-- (void) setFont:(UIFont*) font;
+- (void)latinModernFontWithSize:(CGFloat)size;
+- (void)xitsFontWithSize:(CGFloat)size;
+- (void)termesFontWithSize:(CGFloat)size;
+- (void)defaultFont;
 
+  
 // Insert a list at a given point.
 - (void) insertMathList:(MTMathList*) list atPoint:(CGPoint) point;
 
