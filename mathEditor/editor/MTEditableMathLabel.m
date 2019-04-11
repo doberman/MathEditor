@@ -17,7 +17,6 @@
 #import "MTCaretView.h"
 #import "MTMathList+Editing.h"
 #import "MTDisplay+Editing.h"
-
 #import "MTUnicode.h"
 #import "MTMathListBuilder.h"
 
@@ -134,6 +133,11 @@
 - (CGFloat)fontSize
 {
     return self.label.fontSize;
+}
+
+- (void)setFont:(UIFont *)font
+{
+
 }
 
 - (void)setContentInsets:(UIEdgeInsets)contentInsets

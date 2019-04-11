@@ -1,26 +1,22 @@
 PODS:
-  - iosMath (0.9.8)
-  - MathEditor (0.6.0)
+  - iosMath (1.0.0)
+  - MathEditor (0.6.1):
+    - iosMath
 
 DEPENDENCIES:
-  - "iosMath (from `git@github.com:doberman/iosMath.git`)"
+  - iosMath (from `../iosMath`)
   - MathEditor (from `./`)
 
 EXTERNAL SOURCES:
   iosMath:
-    :git: "git@github.com:doberman/iosMath.git"
+    :path: "../iosMath"
   MathEditor:
     :path: "./"
 
-CHECKOUT OPTIONS:
-  iosMath:
-    :commit: c3e51e1b412c607a93e820405d3860df837ffe71
-    :git: "git@github.com:doberman/iosMath.git"
-
 SPEC CHECKSUMS:
-  iosMath: b987a4b15a96b8bbe4529184a83dc1a8e4dbf4d1
-  MathEditor: 1ee5c0c9aadbead08b1cd02919f66aa7564cdaf6
+  iosMath: 019173d5abb9c6024c4ee8407bef4d7fd21e7ebc
+  MathEditor: b6b9a89dcbfada78dd6acda0fba6048f257809c6
 
-PODFILE CHECKSUM: 816fe1117e500e0bc4366dfaf922e262bbaa8b46
+PODFILE CHECKSUM: e0dff3f368ba68466d9286cbb7da807f25c760b8
 
 COCOAPODS: 1.7.0.beta.3

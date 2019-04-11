@@ -71,6 +71,7 @@
 @property (nonatomic, weak) id<MTEditableMathLabelDelegate> delegate;
 @property (nonatomic, weak) UIView<MTMathKeyboard>* keyboard;
 @property (nonatomic) CGFloat fontSize;
+@property (nonatomic) UIFont* font;
 @property (nonatomic) IBInspectable UIEdgeInsets contentInsets;
 
 - (void) clear;
@@ -80,9 +81,10 @@
 - (void) moveCaretToPoint:(CGPoint) point;
 - (void) startEditing;
 - (void) enableTap:(BOOL) enable;
-- (void) loadNextAtom;
-- (void) loadPreviousAtom;
-  
+//- (void) loadNextAtom;
+//- (void) loadPreviousAtom;
+- (void) setFont:(UIFont*) font;
+
 // Insert a list at a given point.
 - (void) insertMathList:(MTMathList*) list atPoint:(CGPoint) point;
 

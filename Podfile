@@ -9,5 +9,5 @@ target 'MathEditor_Tests' do
   pod 'MathEditor', :path => './'
 end
 target 'MathEditor' do
-  pod 'iosMath', :git => 'git@github.com:doberman/iosMath.git'
+  pod 'iosMath', :path => '../iosMath'
 end
