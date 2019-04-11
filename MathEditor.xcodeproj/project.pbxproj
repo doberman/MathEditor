@@ -73,7 +73,7 @@
 		49DEC83C1CF5591D000053CD /* NewKeyboardAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NewKeyboardAssets.xcassets; sourceTree = "<group>"; };
 		49DEC83D1CF5591D000053CD /* WhiteBGKeyboardTab.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WhiteBGKeyboardTab.xcassets; sourceTree = "<group>"; };
 		49DEC83E1CF57D75000053CD /* lmroman10-bolditalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lmroman10-bolditalic.otf"; sourceTree = "<group>"; };
-		49DEC83F1CF59F82000053CD /* DMMathEditor.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DMMathEditor.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		49DEC83F1CF59F82000053CD /* MathEditor.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = MathEditor.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5628D2459CDCF8D3064ABC73 /* libPods-iosMathEditor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosMathEditor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* MathEditor_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathEditor_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -299,7 +299,7 @@
 		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				49DEC83F1CF59F82000053CD /* DMMathEditor.podspec */,
+				49DEC83F1CF59F82000053CD /* MathEditor.podspec */,
 				09D14643E1EDE3F6786E897E /* README.md */,
 				753F7D8158AE6B036B248A96 /* LICENSE */,
 			);
@@ -317,7 +317,6 @@
 				490BE5521CE695CC00AE31A0 /* Sources */,
 				490BE5531CE695CC00AE31A0 /* Frameworks */,
 				490BE5541CE695CC00AE31A0 /* CopyFiles */,
-				4C3A2645A6B5FE31FA662BF1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -430,13 +429,11 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MathEditor_Tests/Pods-MathEditor_Tests-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/DMMathEditor/MTKeyboardResources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/DMiosMath-iOS8.0/mathFonts.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/MathEditor/MTKeyboardResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MTKeyboardResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mathFonts.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -479,21 +476,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4C3A2645A6B5FE31FA662BF1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MathEditor/Pods-MathEditor-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A3E2D0D1A985C3FEA5864005 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -519,13 +501,11 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MathEditor_Example/Pods-MathEditor_Example-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/DMMathEditor/MTKeyboardResources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/DMiosMath-iOS8.0/mathFonts.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/MathEditor/MTKeyboardResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MTKeyboardResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mathFonts.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

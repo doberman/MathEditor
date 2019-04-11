@@ -3,11 +3,11 @@
 install! 'cocoapods', :deterministic_uuids => false
 
 target 'MathEditor_Example' do
-  pod 'DMMathEditor', :path => './'
+  pod 'MathEditor', :path => './'
 end
 target 'MathEditor_Tests' do
-  pod 'DMMathEditor', :path => './'
+  pod 'MathEditor', :path => './'
 end
 target 'MathEditor' do
-  pod 'DMiosMath', :path => '../iosMath'
+  pod 'iosMath', :git => 'git@github.com:doberman/iosMath.git'
 end

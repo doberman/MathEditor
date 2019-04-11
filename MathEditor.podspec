@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.name             = "DMMathEditor"
-  s.version          = "0.6.0"
+  s.name             = "MathEditor"
+  s.version          = "0.6.1"
   s.summary          = "An editor for editing math equations."
   s.description      = <<-DESC
 MathEditor provides a WYSIWYG editor for math equations. It comes with a
@@ -19,5 +19,4 @@ typesetting rules.
      'MTKeyboardResources' => 'MathKeyboardResources/**/*'
   }
   s.frameworks = 'UIKit'
-  s.dependency 'DMiosMath'
 end
