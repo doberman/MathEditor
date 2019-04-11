@@ -80,7 +80,9 @@
 - (void) moveCaretToPoint:(CGPoint) point;
 - (void) startEditing;
 - (void) enableTap:(BOOL) enable;
-
+- (void) loadNextAtom;
+- (void) loadPreviousAtom;
+  
 // Insert a list at a given point.
 - (void) insertMathList:(MTMathList*) list atPoint:(CGPoint) point;
 

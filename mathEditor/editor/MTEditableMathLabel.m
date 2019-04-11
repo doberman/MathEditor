@@ -6,7 +6,7 @@
 //   
 //  This software may be modified and distributed under the terms of the
 //  MIT license. See the LICENSE file for details.
-//
+//dfasdfdsaf
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -86,7 +86,7 @@
     label.fontSize = 30;
     label.backgroundColor = self.backgroundColor;
     label.userInteractionEnabled = NO;
-    label.textAlignment = kMTTextAlignmentCenter;
+    label.textAlignment = kMTTextAlignmentLeft;
     self.label = label;
     CGAffineTransform transform = CGAffineTransformMakeTranslation(0, self.bounds.size.height);
     _flipTransform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0, -1.0), transform);
