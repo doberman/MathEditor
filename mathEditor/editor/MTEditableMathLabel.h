@@ -72,6 +72,7 @@
 @property (nonatomic, weak) UIView<MTMathKeyboard>* keyboard;
 @property (nonatomic) CGFloat fontSize;
 @property (nonatomic) UIFont* font;
+@property (nonatomic) UIColor* textColor;
 @property (nonatomic) IBInspectable UIEdgeInsets contentInsets;
 
 - (void) clear;
@@ -81,7 +82,6 @@
 - (void) moveCaretToPoint:(CGPoint) point;
 - (void) startEditing;
 - (void) enableTap:(BOOL) enable;
-- (void)setTextColor:(UIColor *)color;
 //- (void) loadNextAtom;
 //- (void) loadPreviousAtom;
 - (void)latinModernFontWithSize:(CGFloat)size;
