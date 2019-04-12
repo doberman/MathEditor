@@ -81,6 +81,7 @@
 - (void) moveCaretToPoint:(CGPoint) point;
 - (void) startEditing;
 - (void) enableTap:(BOOL) enable;
+- (void)setTextColor:(UIColor *)color;
 //- (void) loadNextAtom;
 //- (void) loadPreviousAtom;
 - (void)latinModernFontWithSize:(CGFloat)size;

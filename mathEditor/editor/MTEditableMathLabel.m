@@ -123,6 +123,11 @@
     [super setBackgroundColor:backgroundColor];
     self.label.backgroundColor = backgroundColor;
 }
+  
+- (void)setTextColor:(UIColor *)color
+{
+    self.label.textColor = color;
+}
 
 - (void)setFontSize:(CGFloat)fontSize
 {
