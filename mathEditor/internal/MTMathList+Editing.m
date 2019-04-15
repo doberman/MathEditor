@@ -280,6 +280,22 @@
                 return nil;
             }
         }
+        case kMTSubIndexTypeLeftOperand:
+        case kMTSubIndexTypeRightOperand:
+        {
+            if (atom.type == kMTMathAtomOrderedPair) {
+                MTOrderedPair* pair = (MTOrderedPair*) atom;
+                if (index.subIndexType == kMTSubIndexTypeRightOperand) {
+                    return [pair.rightOperand atomAtListIndex:index.subIndex];
+                } else {
+                    return [pair.leftOperand atomAtListIndex:index.subIndex];
+                }
+                
+            } else {
+                // No pair at this index.
+                return nil;
+            }
+        }
     }
 }
 

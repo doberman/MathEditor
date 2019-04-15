@@ -314,6 +314,12 @@
             [self clearPlaceholders:frac.numerator];
             [self clearPlaceholders:frac.denominator];
         }
+        
+        if (atom.type == kMTMathAtomOrderedPair) {
+            MTOrderedPair *pair = (MTOrderedPair *) atom;
+            [self clearPlaceholders:pair.leftOperand];
+            [self clearPlaceholders:pair.rightOperand];
+        }
     }
 }
 - (void)setMathList:(MTMathList *)mathList
@@ -745,6 +751,10 @@ static const unichar kMTUnicodeGreekCapitalEnd = 0x03A9;
     } else if ([str isEqualToString:@"||"]) {
         [self removePlaceholderIfPresent];
         [self insertAbsValue];
+    } else if ([str isEqualToString:@"square"]) {
+        [self.mathList insertAtom:atom atListIndex:_insertionIndex];
+    } else if ([str isEqualToString:@"orderedPair"]) {
+        [self handlePair:str];
     } else if (atom) {
         if (![self updatePlaceholderIfPresent:atom]) {
             // If a placeholder wasn't updated then insert the new element.
@@ -782,6 +792,22 @@ static const unichar kMTUnicodeGreekCapitalEnd = 0x03A9;
     }
 
     return NO;
+}
+
+-(void) handlePair:(NSString*) accent {
+    
+    // create the pair
+    MTOrderedPair *orderedPair = [MTOrderedPair new];
+    orderedPair.leftOperand = [MTMathList new];
+    [orderedPair.leftOperand addAtom:[MTMathAtomFactory placeholder]];
+    orderedPair.rightOperand = [MTMathList new];;
+    [orderedPair.rightOperand addAtom:[MTMathAtomFactory placeholder]];
+    // insert it
+    if (![self updatePlaceholderIfPresent:orderedPair]) {
+        [self.mathList insertAtom:orderedPair atListIndex:_insertionIndex];
+    }
+    // update the insertion index to go the left operand
+    _insertionIndex = [_insertionIndex levelUpWithSubIndex:[MTMathListIndex level0Index:1] type:kMTSubIndexTypeLeftOperand];
 }
 
 - (void) insertParens
