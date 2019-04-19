@@ -774,6 +774,8 @@ static const unichar kMTUnicodeGreekCapitalEnd = 0x03A9;
     // If trig function, insert parens after
     if ([self isTrigFunction:str]) {
         [self insertParens];
+        // Adds curly brackets around the params
+        [self insertInnerAtom];
     }
 
     if ([self.delegate respondsToSelector:@selector(textModified:)]) {
@@ -821,6 +823,18 @@ static const unichar kMTUnicodeGreekCapitalEnd = 0x03A9;
     [self.mathList insertAtom:atom atListIndex:_insertionIndex];
     [self insertionPointChanged];
     // Don't go to the next insertion index, to start inserting before the close parens.
+}
+
+// Creates an empty inner atom, aka, returns just curly brackets {}
+- (void) insertInnerAtom {
+    [self insertInnerAtomWith:@""];
+}
+
+// Creates an inner atom, aka, wraps value in curly brackets {}
+- (void) insertInnerAtomWith:(NSString*) value {
+    [self.mathList insertAtom:[MTMathAtom atomWithType:kMTMathAtomInner value:value] atListIndex:_insertionIndex];
+    _insertionIndex = _insertionIndex.next;
+    [self insertionPointChanged];
 }
 
 - (void) insertAbsValue
