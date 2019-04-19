@@ -783,7 +783,7 @@ static const unichar kMTUnicodeGreekCapitalEnd = 0x03A9;
 
 // Return YES if string is a trig function, otherwise return NO
 - (BOOL)isTrigFunction:(NSString *)string {
-    NSArray *trigFunctions = @[@"sin", @"cos", @"tan", @"sec", @"csc", @"cot"];
+    NSArray *trigFunctions = @[@"sin", @"cos", @"tan", @"sec", @"csc", @"cot", @"arcsin", @"arccos", @"arctan", @"arccsc", @"arcsec", @"arccot", @"sinh", @"cosh", @"tanh", @"csch", @"sech", @"coth"];
 
     for (NSString *trigFunction in trigFunctions) {
         if ([string isEqualToString:trigFunction]) {
@@ -819,6 +819,7 @@ static const unichar kMTUnicodeGreekCapitalEnd = 0x03A9;
     ch = ')';
     atom = [self atomForCharacter:ch];
     [self.mathList insertAtom:atom atListIndex:_insertionIndex];
+    [self insertionPointChanged];
     // Don't go to the next insertion index, to start inserting before the close parens.
 }
 
