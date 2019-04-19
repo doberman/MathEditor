@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "MathEditor"
-  s.version          = "0.6.5"
+  s.version          = "0.7.1"
   s.summary          = "An editor for editing math equations."
   s.description      = <<-DESC
 MathEditor provides a WYSIWYG editor for math equations. It comes with a
