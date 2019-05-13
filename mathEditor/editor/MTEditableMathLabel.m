@@ -1180,8 +1180,7 @@ static const unichar kMTUnicodeGreekCapitalEnd = 0x03A9;
         } else {
             // If trig function, insert parens after
             if ([self isTrigFunction:str]) {
-                //[self insertParens];
-                [self handleLargeOperatorWithBoundaries:str];
+              [self handleTrig:str];
             }
             else if ([str isEqualToString:@"lim"]) {
                 [self handleLargeOperator:@"op" second:@"op" unicode: @"lim"];
@@ -1343,6 +1342,22 @@ static const unichar kMTUnicodeGreekCapitalEnd = 0x03A9;
         [self.mathList insertAtom:largeOpWithBoundaries atListIndex:_insertionIndex];
         _insertionIndex = _insertionIndex.next;
 //    }
+}
+
+- (void)handleTrig:(NSString*)function{
+  MTLargeOperator* largeOpWithBoundaries = [[MTLargeOperator alloc] initWithValue:function limits:false];
+  [self.mathList insertAtom:largeOpWithBoundaries atListIndex:_insertionIndex];
+  _insertionIndex = _insertionIndex.next;
+  MTInner *inner = [MTInner new];
+  inner.leftBoundary = [MTMathAtom atomWithType:kMTMathAtomBoundary value:@"("];
+  inner.rightBoundary = [MTMathAtom atomWithType:kMTMathAtomBoundary value:@")"];
+  inner.innerList = [MTMathList new];
+  [inner.innerList addAtom:[MTMathAtomFactory placeholder]];
+  if (![self updatePlaceholderIfPresent:inner]) {
+    [self.mathList insertAtom:inner atListIndex:_insertionIndex];
+  }
+  // update the insertion index
+  _insertionIndex = [_insertionIndex levelUpWithSubIndex:[MTMathListIndex level0Index:0] type:kMTSubIndexTypeInner];
 }
 
 - (void) insertParens
