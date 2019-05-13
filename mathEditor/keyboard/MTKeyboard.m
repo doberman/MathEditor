@@ -9,9 +9,10 @@
 //
 
 #import "MTKeyboard.h"
-#import "MTMathKeyboardRootView.h"
+//#import "MTMathKeyboardRootView.h"
 #import "MTFontManager.h"
 #import "MTMathAtomFactory.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface MTKeyboard ()
 
@@ -31,7 +32,7 @@
 }
 
 // Get the font Latin Modern Roman - Bold Italic included in
-- (NSString*) registerAndGetFontName
+/*- (NSString*) registerAndGetFontName
 {
     static NSString* fontName = nil;
     static dispatch_once_t once_token;
@@ -42,7 +43,7 @@
         CGDataProviderRef fontDataProvider = CGDataProviderCreateWithFilename([fontPath UTF8String]);
         CGFontRef myFont = CGFontCreateWithDataProvider(fontDataProvider);
         CFRelease(fontDataProvider);
-
+        
         fontName = (__bridge_transfer NSString*) CGFontCopyPostScriptName(myFont);
         CFErrorRef error = NULL;
         CTFontManagerRegisterGraphicsFont(myFont, &error);
@@ -55,17 +56,16 @@
         NSLog(@"Registered fontName: %@", fontName);
     });
     return fontName;
-}
+}*/
 
 - (void)awakeFromNib
 {
-    [super awakeFromNib];
     // Initialization code
-    NSString* fontName = [self registerAndGetFontName];
+    /*NSString* fontName = [self registerAndGetFontName];
     for (UIButton* varButton in self.variables) {
         varButton.titleLabel.font = [UIFont fontWithName:fontName size:varButton.titleLabel.font.pointSize];
-    }
-
+    }*/
+    
     self.isLowerCase = true;
 }
 
@@ -75,8 +75,12 @@
     [self playClickForCustomKeyTap];
     
     UIButton *button = sender;
-    NSString* str = button.currentTitle;
+    
+    
+    NSString* str = [button.currentTitle stringByReplacingOccurrencesOfString:@" " withString:@""];
     [self.textView insertText:str];
+    NSLog(@"Key Pressed : %@", str);
+    
 }
 
 - (void)enterPressed:(id)sender
@@ -88,7 +92,7 @@
 - (void)backspacePressed:(id)sender
 {
     [self playClickForCustomKeyTap];
-
+    
     [self.textView deleteBackward];
 }
 
@@ -110,7 +114,7 @@
 
 - (void) playClickForCustomKeyTap
 {
-    [[UIDevice currentDevice] playInputClick];
+    AudioServicesPlaySystemSound(1104);
 }
 
 - (void)fractionPressed:(id)sender

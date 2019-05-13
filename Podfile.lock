@@ -1,6 +1,6 @@
 PODS:
   - iosMath (1.1.2)
-  - MathEditor (0.7.2):
+  - MathEditor (0.7.3):
     - iosMath
 
 DEPENDENCIES:
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   iosMath: dfe490d2998162376cdc8026f56f3fea0f28b4bb
-  MathEditor: 400c9a13cd6814faf20c8426fa0dd9dfc0dadc7b
+  MathEditor: 9a520196485c6811707dddb4c8b836f4353f878b
 
 PODFILE CHECKSUM: e0dff3f368ba68466d9286cbb7da807f25c760b8
 

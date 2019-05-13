@@ -3,7 +3,7 @@
 //
 //  Created by Kostub Deshmukh on 9/2/13.
 //  Copyright (C) 2013 MathChat
-//   
+//
 //  This software may be modified and distributed under the terms of the
 //  MIT license. See the LICENSE file for details.
 //
@@ -13,6 +13,10 @@
 
 @class MTEditableMathLabel;
 @class MTMathListIndex;
+@class MTCaretView;
+@class MTMathUILabel;
+@class MTMathListDisplay;
+@class MTDisplay;
 
 /** Delegate for the `MTEditableMathLabel`. All methods are optional. */
 @protocol MTEditableMathLabelDelegate <NSObject>
@@ -23,13 +27,30 @@
 - (void) returnPressed:(MTEditableMathLabel*) label;
 // called when any text is modified
 - (void) textModified:(MTEditableMathLabel*) label;
+// called when any text is modified
+//- (void)textModified:(MTEditableMathLabel *)label withCaretView:(MTCaretView *)caretView;
 
 - (void) didBeginEditing:(MTEditableMathLabel*) label;
+//- (void)didBeginEditing:(MTEditableMathLabel *)label withCaretView:(MTCaretView *)caretView;
 - (void) didEndEditing:(MTEditableMathLabel*) label;
+
+- (void)didTapPreviousArrow:(MTEditableMathLabel *)label withCaretView:(MTCaretView *)caretView;
+- (void)didTapNextArrow:(MTEditableMathLabel *)label withCaretView:(MTCaretView *)caretView;
+- (BOOL)isDefaultKeyboard;
+
+// Magnifying Glass
+- (void)touchesBegan;
+- (void)touchesMoved:(MTEditableMathLabel *)editableMathLabel withCaretView:(MTCaretView *)caretView withTouchLocation:(CGPoint)touchLocation;
+- (void)touchesEnded;
+- (void)touchesCancelled;
+
+// Cursor Position
+- (void)cursorReachedLeft;
+- (void)cursorReachedRight;
 
 @end
 
-/** This protocol provides information on the context of the current insertion point. 
+/** This protocol provides information on the context of the current insertion point.
  The keyboard may choose to enable/disable/highlight certain parts of the UI depending on the context.
  e.g. you cannot enter the = sign when you are in a fraction so the keyboard could disable that.
  */
@@ -74,6 +95,7 @@
 @property (nonatomic) UIFont* font;
 @property (nonatomic) UIColor* textColor;
 @property (nonatomic) IBInspectable UIEdgeInsets contentInsets;
+@property (nonatomic) MTMathUILabel* label;
 
 - (void) clear;
 
@@ -81,18 +103,35 @@
 - (void) clearHighlights;
 - (void) moveCaretToPoint:(CGPoint) point;
 - (void) startEditing;
+- (void) endEditing;
 - (void) enableTap:(BOOL) enable;
-//- (void) loadNextAtom;
-//- (void) loadPreviousAtom;
+- (void) loadNextAtom;
+- (void) loadPreviousAtom;
 - (void)latinModernFontWithSize:(CGFloat)size;
 - (void)xitsFontWithSize:(CGFloat)size;
 - (void)termesFontWithSize:(CGFloat)size;
 - (void)defaultFont;
 
-  
+// Latex
+- (void)setLatex:(NSString *)latex;
+
 // Insert a list at a given point.
 - (void) insertMathList:(MTMathList*) list atPoint:(CGPoint) point;
 
 - (CGSize) mathDisplaySize;
 
+- (void)loadNextAtom;
+- (void)loadPreviousAtom;
+- (void)updateFontSize:(CGFloat)fontSize;
+
+- (void)insertionPointChanged;
+
+- (void)showOrHideCaretView:(BOOL)showOrHide;
+
+- (NSUInteger)loadPrevious;
+- (NSUInteger)loadNext;
+- (MTMathListDisplay*)fetchDisplayList;
+- (void)updateInsertionIndexToCaptureEquationImage;
+//- (MTDisplay*)getCurrentDisplay;
+- (CGFloat)getCurrentDisplayWidth;
 @end

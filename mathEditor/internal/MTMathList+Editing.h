@@ -22,5 +22,9 @@
 // Get the atom at the given index. If there is none, or index is invalid returns nil.
 - (MTMathAtom*) atomAtListIndex:(MTMathListIndex*) index;
 
+- (MTMathAtom *)retrieveAtomAtListIndex:(MTMathListIndex *)index;
+
+//Get the parent mathlist that holds an Inner List
+- (MTMathList*)retrieveParentMathListForInner:(MTMathListIndex *)index;
 
 @end
