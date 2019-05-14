@@ -1703,7 +1703,7 @@ static const unichar kMTUnicodeGreekCapitalEnd = 0x03A9;
             if(_insertionIndex.atomIndex < self.mathList.atoms.count){
                 atom = [[self.mathList atoms] objectAtIndex:_insertionIndex.atomIndex];
             }
-            if([self isInterAtomHasLayout:atom] && atom.isAtLayoutEnd == false){
+            if([self isInterAtomHasLayout:atom] && atom.isAtLayoutEnd == false && ![self isTrigFunction:atom.nucleus]){
                 [self fetchChildAtomsAndUpdateInsertionIndex:atom isNextNavigation:true];
                 return;
             }
@@ -2890,7 +2890,7 @@ static const unichar kMTUnicodeGreekCapitalEnd = 0x03A9;
     NSUInteger previousIndex = _insertionIndex.atomIndex - 1;
     NSUInteger zeroIndex = 0;
     if (previousIndex >= zeroIndex && previousIndex <= self.mathList.atoms.count) {
-        _insertionIndex = [MTMathListIndex level0Index:previousIndex];//_insertionIndex.previous;
+      _insertionIndex = [MTMathListIndex level0Index:previousIndex];//_insertionIndex.previous;
         //[self resetAtomIndex];
         [self insertionPointChanged];
         
