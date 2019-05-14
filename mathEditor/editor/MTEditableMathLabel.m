@@ -703,18 +703,9 @@ static const unichar kMTUnicodeGreekCapitalEnd = 0x03A9;
 
 - (void) handlePrime:(NSString *)type
 {
-    // Create an empty atom and move the insertion index up.
-    MTExponent* exp = [MTExponent new];
-    exp.exponent = [MTMathList new];
-    [exp.exponent addAtom:[MTMathAtomFactory placeholder]];
-    exp.expSuperScript = [MTMathList new];
-    [exp.expSuperScript addAtom:[MTMathAtomFactory atomForLatexSymbolName: type]];
-    exp.isSuperScriptTypePrime = true;
-    if (![self updatePlaceholderIfPresent:exp]) {
-        // If the placeholder hasn't been updated then insert it.
-        [self.mathList insertAtom:exp atListIndex:_insertionIndex];
-    }
-    _insertionIndex = [_insertionIndex levelUpWithSubIndex:[MTMathListIndex level0Index:0] type:kMTSubIndexTypeExponent];
+  MTMathAtom *prime = [MTMathAtomFactory atomForLatexSymbolName: type];
+  [self.mathList insertAtom:prime atListIndex:_insertionIndex];
+  _insertionIndex = _insertionIndex.next;
 }
 
 - (void) handleSubscriptButton
@@ -1180,7 +1171,11 @@ static const unichar kMTUnicodeGreekCapitalEnd = 0x03A9;
         } else {
             // If trig function, insert parens after
             if ([self isTrigFunction:str]) {
-              [self handleTrig:str];
+              if ([str isEqualToString:@"log"]) {
+                [self handleLargeOperatorWithBoundaries:str];
+              } else {
+                [self handleTrig:str];
+              }
             }
             else if ([str isEqualToString:@"lim"]) {
                 [self handleLargeOperator:@"op" second:@"op" unicode: @"lim"];
