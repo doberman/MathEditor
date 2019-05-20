@@ -25,5 +25,7 @@
 // Highlight the entire display with the given color
 - (void) highlightWithColor:(UIColor*) color;
 
+- (MTMathListDisplay*) retrieveDisplayForIndex:(MTMathListIndex*) index;
+
 @end
 
